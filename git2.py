@@ -1,2 +1,2 @@
-print("hello master")
 print("hello admin")
+print("hello master")
