@@ -1,18 +1,18 @@
 class Car:
-    def __init__(self, name, year, price_per_day):
+    def __init__(self, name, year, price):
         self.name = name
         self.year = year
-        self.price_per_day = price_per_day
+        self.price = price
         self.is_rented = False
 
 class User:
-    def __init__(self, first_name, last_name, salary):
-        self.first_name = first_name
-        self.last_name = last_name
+    def __init__(self, name, surname, salary):
+        self.first_name = name
+        self.surname = surname
         self.salary = salary
         self.rented_cars = []
 
-class Rentkompany:
+class Rent:
     def __init__(self, title):
         self.title = title
         self.balance = 0
@@ -45,7 +45,7 @@ class Rentkompany:
         elif tanlov == "2":
             car.year = int(input("New year: "))
         elif tanlov == "3":
-            car.price_per_day = int(input("New price: "))
+            car.price = int(input("New price: "))
         else:
             print("Xato tanlov.")
 
@@ -57,7 +57,7 @@ class Rentkompany:
                 holat = "Ijarada"
             else:
                 holat = "Bosh"
-            print(f"{i}. {car.name}, {car.year}, {car.price_per_day}, {holat}")
+            print(f"{i}. {car.name}, {car.year}, {car.price}, {holat}")
             i += 1
         print("-------------")
 
@@ -65,13 +65,13 @@ class Rentkompany:
         print("\n--- bosh mashinalar ---")
         for car in self.cars:
             if car not in self.rented_cars:
-                print(f"{car.name}, {car.year}, {car.price_per_day}")
+                print(f"{car.name}, {car.year}, {car.price}")
         print("-------------")
 
     def view_rented_cars(self):
         print("\n--- Ijaradagi mashinalar ---")
         for car in self.rented_cars:
-            print(f"{car.name}, {car.year}, {car.price_per_day}")
+            print(f"{car.name}, {car.year}, {car.price}")
         print()
 
     def rent_car(self, user: User):
@@ -89,7 +89,7 @@ class Rentkompany:
             print("Bu mashina ijarada.\n")
             return
         days = int(input("Necha kun?: "))
-        total_price = car.price_per_day * days
+        total_price = car.price * days
         print(f"{car.name} mashinasi uchun {days} kunlik ijara: {total_price}")
         if user.salary < total_price:
             print("Oylik yetmaydi. Mashina berilmaydi.\n")
@@ -117,7 +117,7 @@ class Rentkompany:
         print("Mashina qaytarildi.\n")
 
 
-def manager(company: Rentkompany, user: User):
+def manager(company: Rent, user: User):
     while True:
         kod = input(" -------------------- \n1. Car qo'shish\n2. Car tahrirlash\n3. Barcha mashinalar\n4. Bosh mashinalar\n5. Ijaradagi mashinalar\n6. Ijaraga olish\n7. Mashinani qaytarish\n8. Exit\n: ")
         if kod == "1":
@@ -138,7 +138,7 @@ def manager(company: Rentkompany, user: User):
             print("Dastur tugatildi.")
             break
 
-company = Rentkompany("RENT")
+company = Rent("RENT")
 company.cars.append(Car("Malibu", 2022, 300))
 company.cars.append(Car("Gentra", 2021, 150))
 company.cars.append(Car("Tracker", 2023, 400))
@@ -172,3 +172,26 @@ while True:
         break
 
 manager(company, current_user)
+
+
+
+'''1-savol'''
+class Car:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def drive(self):
+        print(f'{self.brand} car is driving')
+
+
+'''1-savol: classni chuntirib bering'''
+'''2-savol: konstruktorlarni chuntirib bering'''
+'''3-savol: class methodlarini chuntirib bering'''
+'''4-savol: vorislikni chuntirib bering'''
+'''5-savol: polimofrizmni chuntirib bering'''
+'''6-savol: incapsulation nima'''
+'''7-savol: acsist fayllarni chunirib bering'''
+'''8-savol: getter setterni chuntirb bering'''
+'''9-savol: propertini chuntirib bering'''
+'''10-savol: abstruck classni chuntirib bering'''
+'''11-savol: abctruck methodini chuntirib bering'''
