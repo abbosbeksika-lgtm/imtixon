@@ -356,3 +356,4 @@ def run():
             print("Noto‘g‘ri tanlov!\n")
 
 run()
+
